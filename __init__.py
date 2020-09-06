@@ -1,4 +1,4 @@
-from math import log2
+from math import log2;from functools import reduce
 def ham(x:list,PlaceHolder=0): #size of 2^n-n-1
     new=[PlaceHolder];index=0
     for i in range(1,len(x)+int.bit_length(len(x))+1):
