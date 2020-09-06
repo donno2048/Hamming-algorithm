@@ -1,3 +1,11 @@
+from math import log2
+def ham(x:list,PlaceHolder=0): #size of 2^n-n-1
+    new=[PlaceHolder]
+    index=0
+    for i in range(1,len(x)+int.bit_length(len(x))+1):
+        if log2(i).is_integer():new+=[PlaceHolder]
+        else:new+=[x[index]];index+=1
+    return new
 def encode(x:list):
     for i in range(int.bit_length(len(x))-1):
         z=[]
@@ -13,7 +21,9 @@ def decode(x:list):
         if sum(z)%2==1:index+=2**i
     if sum(x)%2==1:x[index]=1-x[index]
     return x
-InitialList=[1,1,1,1,1,0,1,0]
+PreHammedList=[1,0,1,0]
+print(ham(PreHammedList))
+InitialList=ham(PreHammedList)
 print(encode(InitialList))
 CorruptedList=encode(InitialList)
 CorruptedList[4]=1-CorruptedList[4]
